@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# OpenVAS build prefix
+OPV_PREFIX=/opt/openvas
+
+$OPV_PREFIX/sbin/greenbone-nvt-sync
+$OPV_PREFIX/sbin/greenbone-scapdata-sync
+$OPV_PREFIX/sbin/greenbone-certdata-sync
+
+$OPV_PREFIX/sbin/openvasmd --update --progress
+$OPV_PREFIX/sbin/openvasmd --rebuild --progress
+
