@@ -10,6 +10,8 @@ Docker image for OpenVAS - based on [mattias-ohlsson/openvas](https://hub.docker
 
 Examples of accepted environment variables:
 
+gsad:
+
 GSAD_HOST="--allow-header-host 127.0.0.1" 
 
 GSAD_LISTEN="--listen=127.0.0.1"
@@ -29,6 +31,14 @@ GSAD_KEY="--ssl-private-key=/etc/pki/openvas/private/CA/serverkey.pem"
 GSAD_CERT="--ssl-certificate=/etc/pki/openvas/CA/servercert.pem"
 
 TLS_PRIORITIES="--gnutls-priorities=SECURE128:-AES-128-CBC:-CAMELLIA-128-CBC:-VERS-SSL3.0:-VERS-TLS1.0"
+
+manager:
+
+OPENVASMD_LISTEN="--listen=127.0.0.1"
+
+OPENVASMD_PORT="--port=9390"
+
+other:
 
 SMTP_SERVER="smtp.example.com"
 
