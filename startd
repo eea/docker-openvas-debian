@@ -42,8 +42,6 @@ if [ ! -z "$SMTP_SERVER" ] && [ -z "$(cat /etc/ssmtp/ssmtp.conf | grep $SMTP_SER
 fi
 
 
-# /tmp-ul si link-ul de redis????
-
 function sigterm() {
         echo "startd: Shutting down"
 	redis-cli -s /tmp/redis.sock shutdown
