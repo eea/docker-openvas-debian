@@ -30,7 +30,7 @@ RUN  mkdir /opt/openvas && cd /usr/local/src && wget https://github.com/greenbon
 	rm -rf /usr/local/src/gsa-7.0.3/ && \
 	apt-get remove -y cmake build-essential pkg-config libpcap-dev libglib2.0-dev libgpgme11-dev uuid-dev libssh-dev libksba-dev libldap2-dev libsqlite3-dev libmicrohttpd-dev libxml2-dev libxslt1-dev \
 		libhiredis-dev libgcrypt11-dev libgnutls28-dev linux-libc-dev libpopt-dev libglib2.0-dev libpq-dev postgresql-server-dev-9.6 autoconf automake autotools-dev autopoint cmake-data cpio dpkg-dev \
-		libp11-kit-dev make patch libassuan-dev libgmp-dev libgpg-error-dev libobjc-6-dev nettle-dev && \
+		libp11-kit-dev make patch libassuan-dev libgmp-dev libgpg-error-dev libobjc-6-dev nettle-dev libssh2-1-dev && \
 	chmod +x /usr/sbin/startd /usr/sbin/update && \
 	cp /usr/share/doc/msmtp/examples/msmtprc-system.example /etc/msmtprc &&\
 	sed -i '/^#auto_from on.*/s/^#//' /etc/msmtprc
