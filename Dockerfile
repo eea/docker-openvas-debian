@@ -6,7 +6,7 @@ RUN apt-get update && \
         apt-get upgrade && \
         apt-get dist-upgrade && \
         apt-get -y install --no-install-recommends apt-utils && \
-        apt-get -y install --no-install-recommends build-essential cmake bison flex libpcap-dev pkg-config libglib2.0-dev libgpgme11-dev uuid-dev sqlfairy xmltoman doxygen libssh-dev libksba-dev libldap2-dev libsqlite3-dev libmicrohttpd-dev libxml2-dev libxslt1-dev xsltproc clang rsync rpm nsis alien sqlite3 libhiredis-dev libgcrypt11-dev libgnutls28-dev redis-server texlive-latex-base texlive-latex-recommended linux-libc-dev python python-pip mingw-w64 heimdal-multidev libpopt-dev libglib2.0-dev gnutls-bin certbot nmap ufw postgresql-9.6 postgresql-client-9.6 libpq-dev postgresql-server-dev-9.6 postgresql-contrib-9.6 libsnmp-base snmp haveged ssmtp wget libcgi-pm-perl dirmngr && \
+        apt-get -y install --no-install-recommends build-essential cmake bison flex libpcap-dev pkg-config libglib2.0-dev libgpgme11-dev uuid-dev sqlfairy xmltoman doxygen libssh-dev libksba-dev libldap2-dev libsqlite3-dev libmicrohttpd-dev libxml2-dev libxslt1-dev xsltproc clang rsync rpm nsis alien sqlite3 libhiredis-dev libgcrypt11-dev libgnutls28-dev redis-server texlive-latex-base texlive-latex-recommended linux-libc-dev python python-pip mingw-w64 heimdal-multidev libpopt-dev libglib2.0-dev gnutls-bin certbot nmap ufw postgresql-9.6 postgresql-client-9.6 libpq-dev postgresql-server-dev-9.6 postgresql-contrib-9.6 libsnmp-base snmp haveged msmtp-mta wget libcgi-pm-perl dirmngr && \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*
 
@@ -31,7 +31,8 @@ RUN  mkdir /opt/openvas && cd /usr/local/src && wget https://github.com/greenbon
 	apt-get remove -y cmake build-essential pkg-config libpcap-dev libglib2.0-dev libgpgme11-dev uuid-dev libssh-dev libksba-dev libldap2-dev libsqlite3-dev libmicrohttpd-dev libxml2-dev libxslt1-dev \
 		libhiredis-dev libgcrypt11-dev libgnutls28-dev linux-libc-dev libpopt-dev libglib2.0-dev libpq-dev postgresql-server-dev-9.6 autoconf automake autotools-dev autopoint cmake-data cpio dpkg-dev \
 		libp11-kit-dev make patch libassuan-dev libgmp-dev libgpg-error-dev libobjc-6-dev nettle-dev && \
-	chmod +x /usr/sbin/startd /usr/sbin/update
+	chmod +x /usr/sbin/startd /usr/sbin/update && \
+	cp /usr/share/doc/msmtp/examples/msmtprc-system.example /etc/msmtprc
 		
 
 # Add Tini
