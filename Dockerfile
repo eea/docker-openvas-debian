@@ -22,6 +22,7 @@ RUN  mkdir /opt/openvas && cd /usr/local/src && wget https://github.com/greenbon
 	sed -i 's|port 6379|port 0|' /etc/redis/redis.conf && \
 	sed -i 's|^\# unixsocket\ \/var\/run\/redis\/redis\.sock|unixsocket\ \/tmp\/redis\.sock|' /etc/redis/redis.conf && \
 	sed -i 's|^# unixsocketperm |unixsocketperm |' /etc/redis/redis.conf && \
+	sed -i /etc/redis/redis.conf -e '/^save/ s/^#*/#/' && \
 	echo  -e "/usr/local/lib/openvasmd/pg \n/opt/openvas/lib" > /etc/ld.so.conf.d/openvas-manager.conf && \
 	ldconfig && \
 	rm -rf /usr/local/src/gvm-libs-9.0.3/  && \
@@ -32,7 +33,7 @@ RUN  mkdir /opt/openvas && cd /usr/local/src && wget https://github.com/greenbon
 		libhiredis-dev libgcrypt11-dev libgnutls28-dev linux-libc-dev libpopt-dev libglib2.0-dev libpq-dev postgresql-server-dev-9.6 autoconf automake autotools-dev autopoint cmake-data cpio dpkg-dev \
 		libp11-kit-dev make patch libassuan-dev libgmp-dev libgpg-error-dev libobjc-6-dev nettle-dev libssh2-1-dev && \
 	chmod +x /usr/sbin/startd /usr/sbin/update && \
-	cp /usr/share/doc/msmtp/examples/msmtprc-system.example /etc/msmtprc &&\
+	cp /usr/share/doc/msmtp/examples/msmtprc-system.example /etc/msmtprc && \
 	sed -i '/^#auto_from on.*/s/^#//' /etc/msmtprc
 		
 
