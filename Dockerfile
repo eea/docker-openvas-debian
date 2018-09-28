@@ -12,11 +12,12 @@ RUN apt-get update && \
 
 
 COPY startd update /usr/sbin/
+COPY manage_sql.c.patch /usr/local/src/
 
 RUN  mkdir /opt/openvas && cd /usr/local/src && wget https://github.com/greenbone/gvm-libs/releases/download/v9.0.3/openvas-libraries-9.0.3.tar.gz && wget https://github.com/greenbone/openvas-scanner/archive/v5.1.3.tar.gz && wget https://github.com/greenbone/gvm/releases/download/v7.0.3/openvas-manager-7.0.3.tar.gz && wget https://github.com/greenbone/gsa/archive/v7.0.3.tar.gz && \
 	cd /usr/local/src && for i in $(ls *.tar.gz); do tar zxvf $i; done && \
 	export PKG_CONFIG_PATH=/opt/openvas/lib/pkgconfig:$PKG_CONFIG_PATH && cd /usr/local/src/gvm-libs-9.0.3/ && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=/opt/openvas .. && make && make install && \
-	cd /usr/local/src/gvm-7.0.3/ && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=/opt/openvas -DBACKEND=POSTGRESQL .. && make && make install && \
+	cd /usr/local/src/gvm-7.0.3/src && mv /usr/local/src/manage_sql.c.patch . && patch < manage_sql.c.patch && cd .. && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=/opt/openvas -DBACKEND=POSTGRESQL .. && make && make install && \
 	cd /usr/local/src/openvas-scanner-5.1.3/ && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=/opt/openvas .. && make && make install && \
 	cd /usr/local/src/gsa-7.0.3/ && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=/opt/openvas .. && make && make install && \
 	sed -i 's|port 6379|port 0|' /etc/redis/redis.conf && \
