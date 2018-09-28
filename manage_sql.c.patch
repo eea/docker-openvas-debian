@@ -1,0 +1,11 @@
+--- manage_sql.c	2018-03-29 10:53:38.000000000 +0000
++++ manage_sql.c_patched	2018-09-28 07:34:14.005495647 +0000
+@@ -25161,7 +25161,7 @@
+                  " FROM report_counts"
+                  " WHERE report = %llu"
+                  " AND override = %d"
+-                 " AND user = (SELECT id FROM users WHERE uuid = '%s')"
++                 " AND \"user\" = (SELECT id FROM users WHERE uuid = '%s')"
+                  " AND min_qod = %d"
+                  " AND (end_time = 0 or end_time >= m_now ());",
+                  report, overrides, current_credentials.uuid, min_qod);
