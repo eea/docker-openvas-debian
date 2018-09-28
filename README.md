@@ -1,6 +1,7 @@
-# docker-openvas-debian
+# [eeacms/openvas-pg-debian](https://hub.docker.com/r/eeacms/openvas-pg-debian/)
 
 Docker image for OpenVAS - based on [mattias-ohlsson/openvas](https://hub.docker.com/r/mattiasohlsson/openvas/)
+
 ## Run
 
 - Username: admin
